@@ -27,7 +27,7 @@ void setup()
   world.setGravity(0, 0);
   world.setEdgesRestitution(0.5);
 
-  scale = new PVector(0.9,0.9);
+  scale = new PVector(0.8,0.8);
 
   workVectorA = new PVector();
   workVectorB = new PVector();
@@ -59,14 +59,15 @@ void setup()
     poly.setRestitution(0.5);
   	
   	fill(255,0,0);
+    boolean addPoly = true;
     for (int j = 0; j < regionCoordinates.length; j++) {
       PVector coords;
 
       float x = regionCoordinates[j][0];
       float y = regionCoordinates[j][1];
 
-      x = constrain(x, 0, width);
-      y = constrain(y, 0, height);
+      //x = constrain(x, 0, width);
+      //y = constrain(y, 0, height);
 
       //translate to origin
       x -= points[i][0];
@@ -86,11 +87,21 @@ void setup()
       workVectorA.mult(x);
       workVectorB.mult(y);
       coords = PVector.add(workVectorA, workVectorB); //If this adds too much garbage, try instance .add() on another work vector
+      x = coords.x + points[i][0];
+      y = coords.y + points[i][1];
+
+      if ((x < 0) ||
+          (x > width) ||
+          (y < 0) ||
+          (y > height)
+         ){
+        addPoly = false; //poly is outside of screen, don't add it
+      }
 
       //translate to origin
       //coords.x += points[i][0];
       //coords.y += points[i][1];
-      poly.vertex(coords.x + points[i][0], coords.y + points[i][1]);
+      poly.vertex(x, y);
 
       println("poly.vertex("+x+", "+y+")");
 
@@ -98,7 +109,10 @@ void setup()
       //  println(regionCoordinates[j] + ", " + regionCoordinates[j][k]);
       //}
     }
-    world.add(poly);
+
+    if (addPoly) {
+      world.add(poly);
+    }
     //break;
 
     //poly = new FPoly();

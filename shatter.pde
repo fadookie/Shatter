@@ -21,6 +21,8 @@ void setup()
 {
   size(600, 600);
   Fisica.init(this);
+  
+  smooth();
 
   //Make the world
   world = new FWorld();
@@ -53,7 +55,7 @@ void setup()
     FPoly poly = new FPoly();
     poly.setBullet(false);
     poly.setStrokeWeight(3);
-    poly.setFill(fillColor.x, fillColor.y, fillColor.z);
+    poly.setFill(random(255), random(255), random(255));
     float density = 10;
     poly.setDensity(density);
     poly.setRestitution(0.5);
@@ -108,6 +110,7 @@ void setup()
       //for (int k = 0; k < regionCoordinates[j].length; k++) {
       //  println(regionCoordinates[j] + ", " + regionCoordinates[j][k]);
       //}
+      
     }
 
     if (addPoly) {

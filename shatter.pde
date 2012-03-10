@@ -38,9 +38,12 @@ void setup()
   
   for(int i = 0; i < points.length; i++)
   {
-    points[i][0] = random(width);
-    points[i][1] = random(height);
+    points[i][0] = i * 10;
+    for (int j = 0; j < points.length; j++) {
+      points[i][1] = j * 10;
+    }
   }
+
   voronoi = new Voronoi( points );
   
   regions = voronoi.getRegions();
@@ -133,7 +136,18 @@ void setup()
 
 void draw()
 {
-    background(255);
-  world.step();
-  world.draw(this); 
+  background(255);
+
+  for(int i=0; i<regions.length; i++)
+  {
+       // an array of points
+       float[][] regionCoordinates = regions[i].getCoords();
+               
+       fill(255,0,0);
+       regions[i].draw(this); // draw this shape
+  }
+
+  //Physics
+  //world.step();
+  //world.draw(this); 
 }

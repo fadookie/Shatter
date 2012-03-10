@@ -19,6 +19,7 @@ PVector workVectorC;
 			
 void setup()
 {
+  size(600, 600);
   Fisica.init(this);
 
   //Make the world
@@ -34,7 +35,6 @@ void setup()
   workVectorC = new PVector();
   
   fillColor = new PVector(120, 30, 90);
-  size(600, 600);
   
   for(int i = 0; i < points.length; i++)
   {

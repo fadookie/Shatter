@@ -19,7 +19,7 @@ PVector workVectorC;
 			
 void setup()
 {
-  size(600, 600);
+  size(1024, 768);
   Fisica.init(this);
   
   smooth();
@@ -29,7 +29,7 @@ void setup()
   world.setGrabbable(true); //Only allow mouse grabbing in debug mode
   world.setGravity(0, 0);
   world.setEdges();
-  world.remove(world.top);
+  //world.remove(world.top);
   world.setEdgesRestitution(0.5);
 
   scale = new PVector(1,1);

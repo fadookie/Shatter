@@ -3,8 +3,8 @@ import fisica.*;
 PVector fillColor;
 FWorld world;
 
-
-float[][] points = new float[100][2];
+int gridsize = 10;
+float[][] points = new float[gridsize*gridsize][2];
 Voronoi voronoi;
 MPolygon[] regions;
 
@@ -36,11 +36,14 @@ void setup()
   fillColor = new PVector(120, 30, 90);
   size(600, 600);
   
-  for(int i = 0; i < points.length; i++)
+  
+  
+  for(int i = 0; i < gridsize; i++)
   {
-    points[i][0] = i * 10;
-    for (int j = 0; j < points.length; j++) {
-      points[i][1] = j * 10;
+    float nudge = 0.2;
+    for (int j = 0; j < gridsize; j++) {
+      points[i + gridsize*j][0] = (i + random(-nudge, nudge)) * 50;
+      points[i + gridsize*j][1] = (j + random(-nudge, nudge)) * 50;
     }
   }
 
@@ -138,16 +141,20 @@ void draw()
 {
   background(255);
 
-  for(int i=0; i<regions.length; i++)
-  {
-       // an array of points
-       float[][] regionCoordinates = regions[i].getCoords();
-               
-       fill(255,0,0);
-       regions[i].draw(this); // draw this shape
-  }
+//  for(int i=0; i<regions.length; i++)
+//  {
+//       // an array of points
+//       float[][] regionCoordinates = regions[i].getCoords();
+//               
+//       fill(255,0,0);
+//       regions[i].draw(this); // draw this shape
+//       
+//       fill(0,0,255);
+//       ellipseMode(CENTER);
+//       ellipse(points[i][0], points[i][1], 5, 5);
+//  }
 
   //Physics
-  //world.step();
-  //world.draw(this); 
+  world.step();
+  world.draw(this); 
 }

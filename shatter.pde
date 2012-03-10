@@ -47,6 +47,8 @@ void setup()
 
       float x = regionCoordinates[j][0];
       float y = regionCoordinates[j][1];
+      x = constrain(x, 0, width);
+      y = constrain(y, 0, height);
       poly.vertex(x, y);
       println("poly.vertex("+x+", "+y+")");
 
@@ -55,7 +57,7 @@ void setup()
       //}
     }
     world.add(poly);
-    break;
+    //break;
 
     //poly = new FPoly();
     //poly.setStrokeWeight(3);

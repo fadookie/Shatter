@@ -19,6 +19,7 @@ PVector workVectorC;
 			
 void setup()
 {
+  size(600, 600);
   Fisica.init(this);
 
   //Make the world
@@ -34,7 +35,6 @@ void setup()
   workVectorC = new PVector();
   
   fillColor = new PVector(120, 30, 90);
-  size(600, 600);
   
   
   
@@ -42,8 +42,8 @@ void setup()
   {
     float nudge = 0.2;
     for (int j = 0; j < gridsize; j++) {
-      points[i + gridsize*j][0] = (i + random(-nudge, nudge)) * 50;
-      points[i + gridsize*j][1] = (j + random(-nudge, nudge)) * 50;
+      points[i + gridsize*j][0] = (i + random(-nudge, nudge)) * 100;
+      points[i + gridsize*j][1] = (j + random(-nudge, nudge)) * 100;
     }
   }
 

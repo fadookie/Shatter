@@ -49,7 +49,7 @@ void setup()
   
   regions = voronoi.getRegions();
 
-    for(int i=0; i<regions.length; i++)
+  for(int i=0; i<regions.length; i++)
   {
   	// an array of points
   	float[][] regionCoordinates = regions[i].getCoords();
@@ -134,6 +134,16 @@ void setup()
   	//regions[i].draw(this); // draw this shape
   }
 
+}
+
+void keyPressed() {
+  ArrayList<FBody> bodies = world.getBodies();
+  FBody body = bodies.get((int)random(0, bodies.size()));
+  float forceMod = 9000000;
+  float xForce = random(-forceMod, forceMod);
+  float yForce = random(-forceMod, forceMod);
+  body.setForce(xForce, yForce);
+  //println(xForce + ", " + yForce);
 }
 
 void draw()

@@ -28,7 +28,7 @@ void setup()
   world.setGravity(0, 0);
   world.setEdgesRestitution(0.5);
 
-  scale = new PVector(0.8,0.8);
+  scale = new PVector(1,1);
 
   workVectorA = new PVector();
   workVectorB = new PVector();

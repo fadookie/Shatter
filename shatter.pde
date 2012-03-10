@@ -68,9 +68,14 @@ void setup()
       x = constrain(x, 0, width);
       y = constrain(y, 0, height);
 
+      //translate to origin
+      x -= points[i][0];
+      y -= points[i][1];
+  
       //Apply transformations
       //[a c
       // b d]
+      
       workVectorA.x = scale.x; //a
       workVectorA.y = 0; //b
 
@@ -82,7 +87,10 @@ void setup()
       workVectorB.mult(y);
       coords = PVector.add(workVectorA, workVectorB); //If this adds too much garbage, try instance .add() on another work vector
 
-      poly.vertex(coords.x, coords.y);
+      //translate to origin
+      //coords.x += points[i][0];
+      //coords.y += points[i][1];
+      poly.vertex(coords.x + points[i][0], coords.y + points[i][1]);
 
       println("poly.vertex("+x+", "+y+")");
 

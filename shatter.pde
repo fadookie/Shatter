@@ -28,6 +28,8 @@ void setup()
   world = new FWorld();
   world.setGrabbable(true); //Only allow mouse grabbing in debug mode
   world.setGravity(0, 0);
+  world.setEdges();
+  world.remove(world.top);
   world.setEdgesRestitution(0.5);
 
   scale = new PVector(1,1);
